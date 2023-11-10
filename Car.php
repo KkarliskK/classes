@@ -1,13 +1,8 @@
 <?php
+include_once 'vehicle.php';
+
 
 Class Car {
-    public $brand;
-
-    public function __construct($brand)
-    {
-        $this->brand = $brand; 
-        echo $this->brand. " is alive <br>";
-    }
 
     public function __destruct()
     {

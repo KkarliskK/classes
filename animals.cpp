@@ -3,50 +3,41 @@
 using namespace std;
 
 class Animal{
-    
-};
-
-class Cat{
-    private:
+    protected:
         int age;
-    
+        
     public: 
         string name;
-    
-        Cat(string n, int a){
-            name = n;
-            age = a;
+        
+        Animal(string name, int age){
+            name = name;
+            age = age;
         };
-        
-        void birthday(){
-            this->age++;
-        }
-        
-        void meow(){
-            cout << "meow";
-        }
-    
-};
-
-class Dog {
-    //ipashibas
-    
-    private:
-        int age;
-        
-    public:
-        string name;
-        
-        Dog(string n, int a) {
-            name = n;
-            age = a;
-        }
         
         void birthday() {
             this->age++;
         };
         
-        void woof() {
+        virtual void makeSound() = 0;
+};
+
+class Cat : public Animal{
+    public:
+
+        Cat(string name, int age) : Animal(name, age) {};
+    
+        void makeSound(){
+            cout << "meow" << endl;
+        }
+    
+};
+
+class Dog : public Animal {
+    public: 
+        
+        Dog(string name, int age) : Animal(name, age) {};
+        
+        void makeSound() {
             cout<<"Woof!" << endl;
         };
     
@@ -55,11 +46,11 @@ int main() {
     
     Dog dog1("Reksis", 6);
     cout<<dog1.name + "\n";
-    dog1.woof();
+    dog1.makeSound();
     
     Cat cat1("Mincis", 2);
     cout <<  cat1.name + "\n";
-    cat1.meow();
+    cat1.makeSound();
 
     return 0;
 }
